@@ -21,10 +21,17 @@ export default class AddNote extends React.Component {
     fetch(`${config.API_ENDPOINT}/notes`,
       { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(note) }
     )
-    .then(resp => resp.json())
+    .then(resp => {
+      if(!resp.ok)
+        return resp.json().then(e => Promise.reject(e))  
+      return resp.json()
+    })
     .then(newNote => {
       this.context.addNote(newNote)
       this.props.history.push(`/note/${newNote.id}`)
+    })
+    .catch(err => {
+      console.error(err)
     })
   }
 
