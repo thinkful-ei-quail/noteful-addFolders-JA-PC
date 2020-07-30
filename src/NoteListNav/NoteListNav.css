@@ -32,6 +32,7 @@
 
 .NoteListNav__folder-link::after {
   content: ' ';
+  display: inline-block;
 }
 .NoteListNav__folder-link:hover {
   color: #FFB72F;
