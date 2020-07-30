@@ -41,9 +41,9 @@ export default class Note extends React.Component {
         // allow parent to perform extra behaviour
         this.props.onDeleteNote(noteId)
       })
-      // .catch(error => {
-      //   console.error({ error })
-      // })
+      .catch(error => {
+        console.error({ error })
+      })
   }
 
   render() {
